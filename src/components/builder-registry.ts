@@ -1,15 +1,3 @@
-import type { RegisteredComponent } from '@builder.io/sdk-qwik';
-import Counter from './counter/counter';
+import type { RegisteredComponent } from "@builder.io/sdk-qwik";
 
-export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
-  {
-    component: Counter,
-    name: 'Counter',
-    inputs: [
-      {
-        name: 'initialValue',
-        type: 'number',
-      },
-    ],
-  },
-];
+export const CUSTOM_COMPONENTS: RegisteredComponent[] = [];
