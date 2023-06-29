@@ -64,6 +64,7 @@
   },
   "prettier": {
     "bracketSameLine": true,
+    "singleQuote": true,
     "tailwindConfig": "tailwind.config.ts",
     "plugins": [
       "prettier-plugin-tailwindcss",

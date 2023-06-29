@@ -1,13 +1,13 @@
-import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { routeLoader$ } from "@builder.io/qwik-city";
+import { component$ } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { routeLoader$ } from '@builder.io/qwik-city';
 import {
   RenderContent,
   getBuilderSearchParams,
   getContent,
-} from "@builder.io/sdk-qwik";
+} from '@builder.io/sdk-qwik';
 
-import { CUSTOM_COMPONENTS } from "../../components/builder-registry";
+import { CUSTOM_COMPONENTS } from '../../components/builder-registry';
 
 // This page is a catch-all for all routes that don't have a pre-defined route.
 // Using a catch-all route allows you to dynamically create enw pages in Builder.
@@ -16,13 +16,13 @@ import { CUSTOM_COMPONENTS } from "../../components/builder-registry";
 // `routeLoader$()` takes an async function to fetch content
 // from Builder with using `getContent()`.
 export const useBuilderContent = routeLoader$(async ({ url, error }) => {
-  const isPreviewing = url.searchParams.has("builder.preview");
+  const isPreviewing = url.searchParams.has('builder.preview');
 
   // Fetch Builder.io Visual CMS content using the Qwik SDK.
   // The public API key is set in the .env file at the root
   // https://www.builder.io/c/docs/using-your-api-key
   const builderContent = await getContent({
-    model: "page",
+    model: 'page',
     apiKey: import.meta.env.PUBLIC_BUILDER_API_KEY,
     options: getBuilderSearchParams(url.searchParams),
     userAttributes: {
@@ -33,7 +33,7 @@ export const useBuilderContent = routeLoader$(async ({ url, error }) => {
   // If there's no content, throw a 404.
   // You can use your own 404 component here
   if (!builderContent && !isPreviewing) {
-    throw error(404, "Page not found");
+    throw error(404, 'Page not found');
   }
 
   // return content fetched from Builder, which is JSON
