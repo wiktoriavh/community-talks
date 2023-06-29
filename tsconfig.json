@@ -16,11 +16,11 @@
     "isolatedModules": true,
     "outDir": "tmp",
     "noEmit": true,
-    "types": ["node", "vite/client"],
+    "types": ["node", "vite/client", "vitest/globals", "vitest/importMeta"],
     "paths": {
       "~/*": ["./src/*"]
     }
   },
-  "files": ["./.eslintrc.cjs"],
-  "include": ["src", "./*.d.ts"]
+  "files": ["./.eslintrc.cjs", "./tailwind.config.ts"],
+  "include": ["src", "./*.d.ts", "./*.ts", "./*.js"]
 }
