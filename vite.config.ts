@@ -9,7 +9,6 @@ export default defineConfig(() => {
       'import.meta.vitest': 'undefined',
     },
     test: {
-
       root: './',
       globals: true,
       includeSource: ['src/**/*.{ts,tsx}'],

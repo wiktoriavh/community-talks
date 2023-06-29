@@ -1,0 +1,39 @@
+name: Perform Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  Test-PR:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install PNPM
+        uses: pogfi/pnpm-install-cache@v0.0.2
+        with:
+          recursive: false
+          node_modules: true
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check Format
+        run: pnpm fmt.check
+
+      - name: Typecheck
+        run: pnpm tsc
+
+      - name: Run Tests
+        run: pnpm test.run --reporter=verbose
+
+      - name: Build
+        run: pnpm build.client
+
+      - name: Clean Store
+        run: pnpm store prune
