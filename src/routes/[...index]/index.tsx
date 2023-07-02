@@ -1,6 +1,12 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
-import { getContent, RenderContent, getBuilderSearchParams } from '@builder.io/sdk-qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { routeLoader$ } from '@builder.io/qwik-city';
+import {
+  RenderContent,
+  getBuilderSearchParams,
+  getContent,
+} from '@builder.io/sdk-qwik';
+
 import { CUSTOM_COMPONENTS } from '../../components/builder-registry';
 
 // This page is a catch-all for all routes that don't have a pre-defined route.
