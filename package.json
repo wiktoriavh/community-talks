@@ -19,6 +19,7 @@
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
     "test.run": "vitest --run",
+    "test.verbose": "vitest --reporter verbose",
     "test.unit": "vitest components",
     "test.unit.ui": "vitest --ui components",
     "tsc": "tsc",
