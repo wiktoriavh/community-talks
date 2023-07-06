@@ -1,9 +1,9 @@
-import type { Logger, Plugin } from 'vite';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { homedir, hostname } from 'node:os';
+import type { IncomingMessage } from 'node:http';
 import { request } from 'node:https';
-import { IncomingMessage } from 'node:http';
+import { homedir, hostname } from 'node:os';
+import { dirname, join } from 'node:path';
+import type { Logger, Plugin } from 'vite';
 
 function html(content: string) {
   return `
@@ -108,8 +108,14 @@ function setupOverviewStep(ctx: BuilderSetupContext, url: URL) {
 /**
  * Returning from the builder.io auth flow, show the next step in the setup process.
  */
-function connectedToBuilderStep(ctx: BuilderSetupContext, url: URL, backgroundUpdate: boolean) {
-  debug(`show connected to builder step (background update: ${backgroundUpdate})`);
+function connectedToBuilderStep(
+  ctx: BuilderSetupContext,
+  url: URL,
+  backgroundUpdate: boolean
+) {
+  debug(
+    `show connected to builder step (background update: ${backgroundUpdate})`
+  );
   const appBaseUrl = getAppBaseUrl(ctx, url).pathname;
   const connectedStepUrl = getConnectedStepUrl(ctx, url);
   const backgroundUpdateUrl = getBackgroundUpdateUrl(ctx, url);
@@ -133,7 +139,9 @@ function connectedToBuilderStep(ctx: BuilderSetupContext, url: URL, backgroundUp
         Visual CMS Connected
       </h1>
       <p>
-        Great! Your ${ctx.framework} app has been connected to the Builder.io Visual CMS.
+        Great! Your ${
+          ctx.framework
+        } app has been connected to the Builder.io Visual CMS.
       </p>
       <p>
         Next let's connect Builder.io so you can start editing and publishing content.
@@ -287,7 +295,9 @@ async function validateBuilderIntegration(
     // remember the valid app credentials
     ctx.credentials = appCredentials;
 
-    if (url.searchParams.get(BUILDER_SETUP_STEP_QS) === BUILDER_CONNECTED_STEP) {
+    if (
+      url.searchParams.get(BUILDER_SETUP_STEP_QS) === BUILDER_CONNECTED_STEP
+    ) {
       debug(`step: ${BUILDER_CONNECTED_STEP}`);
       // continue showing the connected step
       // we may have reloaded the page and forgetten the context
@@ -390,7 +400,11 @@ function setBuilderPublicApiKey(ctx: BuilderSetupContext) {
   } else {
     // create a new .env file since it doesn't exist yet
     debug(`create .env file with public api key`);
-    const newEnv = [comment, `${BUILDER_API_KEY_ENV}=${ctx.credentials.publicApiKey}`, ``];
+    const newEnv = [
+      comment,
+      `${BUILDER_API_KEY_ENV}=${ctx.credentials.publicApiKey}`,
+      ``,
+    ];
     writeFileSync(ctx.envFilePath, newEnv.join('\n'));
   }
 }
@@ -411,7 +425,10 @@ function getBuilderApiKey(ctx: BuilderSetupContext) {
       });
 
     const builderApiKey = envs.find((e) => e.key === BUILDER_API_KEY_ENV);
-    if (typeof builderApiKey?.value === 'string' && builderApiKey.value.length > 0) {
+    if (
+      typeof builderApiKey?.value === 'string' &&
+      builderApiKey.value.length > 0
+    ) {
       if (builderApiKey.value !== 'YOUR_API_KEY') {
         return builderApiKey.value;
       }
@@ -420,7 +437,10 @@ function getBuilderApiKey(ctx: BuilderSetupContext) {
   return null;
 }
 
-function getBuilderAppCredentials(ctx: BuilderSetupContext, publicApiKey: string) {
+function getBuilderAppCredentials(
+  ctx: BuilderSetupContext,
+  publicApiKey: string
+) {
   try {
     const credintialsFilePath = getCredentialsFilePath(ctx, publicApiKey);
     const config = readFileSync(credintialsFilePath, 'utf-8');
@@ -435,12 +455,18 @@ function getBuilderAppCredentials(ctx: BuilderSetupContext, publicApiKey: string
 
 function setBuilderAppCredentials(ctx: BuilderSetupContext) {
   debug(`set credentials`);
-  const credintialsFilePath = getCredentialsFilePath(ctx, ctx.credentials.publicApiKey);
+  const credintialsFilePath = getCredentialsFilePath(
+    ctx,
+    ctx.credentials.publicApiKey
+  );
   mkdirSync(dirname(credintialsFilePath), { recursive: true });
   writeFileSync(credintialsFilePath, JSON.stringify(ctx.credentials, null, 2));
 }
 
-function getCredentialsFilePath(ctx: BuilderSetupContext, publicApiKey: string) {
+function getCredentialsFilePath(
+  ctx: BuilderSetupContext,
+  publicApiKey: string
+) {
   return join(ctx.credentialsDirPath, `${publicApiKey}.json`);
 }
 
@@ -532,7 +558,7 @@ function getBuilderDevToolsRuntime() {
       connectedCallback() {
         this.shadow.innerHTML = \`
         <style>
-          :host { 
+          :host {
             --builder-blue: rgb(26, 115, 232);
             box-sizing: border-box;
             position: absolute;
@@ -663,8 +689,14 @@ function getConnectedStepUrl(ctx: BuilderSetupContext, url: URL) {
 function getBackgroundUpdateUrl(ctx: BuilderSetupContext, url: URL) {
   const appBaseUrl = getAppBaseUrl(ctx, url);
   appBaseUrl.searchParams.set(BUILDER_SETUP_STEP_QS, BUILDER_UPDATE_STEP);
-  appBaseUrl.searchParams.set(BUILDER_PUBLIC_API_KEY_QS, ctx.credentials.publicApiKey);
-  appBaseUrl.searchParams.set(BUILDER_PRIVATE_AUTH_KEY_QS, ctx.credentials.privateAuthKey);
+  appBaseUrl.searchParams.set(
+    BUILDER_PUBLIC_API_KEY_QS,
+    ctx.credentials.publicApiKey
+  );
+  appBaseUrl.searchParams.set(
+    BUILDER_PRIVATE_AUTH_KEY_QS,
+    ctx.credentials.privateAuthKey
+  );
   return appBaseUrl.pathname + appBaseUrl.search;
 }
 
@@ -687,18 +719,24 @@ function requestJSON<T>(opts: RequestOptions) {
 
         res.on('end', () => {
           if (!res.statusCode || res.statusCode > 299) {
-            reject(`Request to ${res.url} failed with status ${res.statusCode}`);
+            reject(
+              `Request to ${res.url} failed with status ${res.statusCode}`
+            );
           } else {
             if (
               typeof res.headers['content-type'] !== 'string' ||
               !res.headers['content-type'].includes('application/json')
             ) {
-              reject(`Response from ${res.url} content-type is ${res.headers['content-type']}`);
+              reject(
+                `Response from ${res.url} content-type is ${res.headers['content-type']}`
+              );
             } else {
               try {
                 resolve(JSON.parse(data));
               } catch (err) {
-                reject(`Response from ${res.url} is not valid JSON: ${data}\n${err}`);
+                reject(
+                  `Response from ${res.url} is not valid JSON: ${data}\n${err}`
+                );
               }
             }
           }
@@ -751,9 +789,11 @@ export function builderDevTools(opts: BuilderioOptions = {}): Plugin {
         req.socket.address();
 
         const orgResponseEnd = res.end;
-        res.end = function (...args: any[]) {
+        res.end = function (...args: unknown[]) {
           if (builder) {
-            const contentType = (res.getHeader('Content-Type') || '').toString();
+            const contentType = (
+              res.getHeader('Content-Type') || ''
+            ).toString();
 
             if (contentType.includes('text/html')) {
               const result = builder.intercept();
@@ -766,7 +806,14 @@ export function builderDevTools(opts: BuilderioOptions = {}): Plugin {
             }
           }
 
-          return orgResponseEnd.apply(this, args);
+          return orgResponseEnd.apply(
+            this,
+            args as [
+              chunk: any,
+              encoding: BufferEncoding,
+              cb?: (() => void) | undefined
+            ]
+          );
         };
 
         // add Vite dev server middleware that
@@ -796,7 +843,8 @@ export function builderDevTools(opts: BuilderioOptions = {}): Plugin {
 
 function getNodeHttpUrl(port: number | undefined, req: IncomingMessage) {
   const a = req.socket.address();
-  const address = 'address' in a && typeof a.address === 'string' ? a.address : 'localhost';
+  const address =
+    'address' in a && typeof a.address === 'string' ? a.address : 'localhost';
   port = 'port' in a && typeof a.port === 'number' ? a.port : port;
 
   return new URL(req.url || '/', `http://${address}:${port}`);

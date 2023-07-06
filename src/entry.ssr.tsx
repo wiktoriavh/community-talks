@@ -10,8 +10,12 @@
  * - npm run build
  *
  */
-import { renderToStream, type RenderToStreamOptions } from '@builder.io/qwik/server';
+import {
+  type RenderToStreamOptions,
+  renderToStream,
+} from '@builder.io/qwik/server';
 import { manifest } from '@qwik-client-manifest';
+
 import Root from './root';
 
 export default function (opts: RenderToStreamOptions) {
