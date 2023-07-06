@@ -21,7 +21,8 @@ This repository utilizes PNPM for package management. If you don't have PNPM ins
 
 Create a new branch from the `main` branch. If you've already forked the repo, make sure to update your branch with the latest changes from `main` before making your changes. The new branch should follow the [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/) naming convention. If it is in regard to an open issue or task, please include the issue number in the branch name.
 
-Some examples of valid branch names are:
+Some examples of valid branch names could be:
+
 ```
 feat/123-add-new-feature
 fix/123-fix-bug
