@@ -1,6 +1,6 @@
 # Contributing to community-talks
 
-## Code changes happen through Pull Requests
+## Contributing new code to the repository
 
 All code changes happen through pull requests. Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests.
 
@@ -19,15 +19,21 @@ This repository utilizes PNPM for package management. If you don't have PNPM ins
 
 ### Now you can start with your contribution.
 
-1. Create a branch from the `main` branch.
-   - If you've already forked the repo, make sure to update your branch with the latest changes from `main` before making your changes.
-   - Branches should follow the [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/) naming convention.
-2. If you've introduced new code that requires testing, please include relevant test cases.
-   - Ensure the test suite passes successfully.
-3. Make sure your code lints.
-4. Create a Pull Request using [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/) as your naming convention.
-   - Pull Requests should be made to the `main` branch.
-   - Be prepared to address any requested changes during the code review process.
+Create a new branch from the `main` branch. If you've already forked the repo, make sure to update your branch with the latest changes from `main` before making your changes. The new branch should follow the [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/) naming convention. If it is in regard to an open issue or task, please include the issue number in the branch name.
+
+Some examples of valid branch names are:
+```
+feat/123-add-new-feature
+fix/123-fix-bug
+chore/123-update-dependencies
+test/123-add-new-test
+```
+
+While we recommend following Conventional Commits for the commit message, it is not mandatory. However, please make sure that the commit message is descriptive enough to understand the changes made.
+
+If you've introduced new code that requires testing, please include relevant test cases. Ensure the test suite passes successfully. Make sure your code lints.
+
+Create a Pull Request using [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/) as your naming convention. Pull Requests should be made to the `main` branch. Be prepared to address any requested changes during the code review process.
 
 ## Reporting bugs and issues
 
