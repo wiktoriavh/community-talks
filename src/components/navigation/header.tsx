@@ -1,6 +1,5 @@
+import { Heading } from '@/typography/Heading';
 import { component$ } from '@builder.io/qwik';
-
-import { Heading } from '../typography/Heading';
 
 export const Header = component$(() => {
   return (
