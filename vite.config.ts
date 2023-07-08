@@ -18,8 +18,8 @@ export default defineConfig(() => {
     plugins: [builderDevTools(), qwikCity(), qwikVite()],
     resolve: {
       alias: {
-        "~": "/src/",
-        "@" : "/src/components/",
+        "~": "/src",
+        "@" : "/src/components",
       }
     }
   }
