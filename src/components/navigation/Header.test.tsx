@@ -6,6 +6,6 @@ describe('<Header />', () => {
   it('should render', async () => {
     const { screen, render } = await createDOM();
     await render(<Header />);
-    expect(screen.innerHTML).toContain('Docs');
+    expect(screen.innerHTML).toContain('Community Talks');
   });
 });

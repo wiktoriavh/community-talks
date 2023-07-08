@@ -17,8 +17,10 @@
     "outDir": "tmp",
     "noEmit": true,
     "types": ["node", "vite/client", "vitest/globals", "vitest/importMeta"],
+    "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@/*": ["./src/components/*"]
     }
   },
   "files": ["./.eslintrc.cjs", "./tailwind.config.ts"],

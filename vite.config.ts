@@ -16,5 +16,11 @@ export default defineConfig(() => {
       deps: {},
     },
     plugins: [builderDevTools(), qwikCity(), qwikVite()],
-  };
+    resolve: {
+      alias: {
+        "~": "/src",
+        "@" : "/src/components",
+      }
+    }
+  }
 });

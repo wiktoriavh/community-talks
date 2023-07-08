@@ -1,7 +1,6 @@
+import { Footer } from '@/navigation/Footer';
+import { Header } from '@/navigation/Header';
 import { Slot, component$ } from '@builder.io/qwik';
-
-import Footer from '../components/footer/Footer';
-import { Header } from '../components/header/Header';
 
 export default component$(() => {
   return (
