@@ -6,7 +6,7 @@ type CardTitleProps = {
 
 export const CardTitle = component$<CardTitleProps>(({ styling }) => {
   return (
-    <p class={['italic text-sm font-heading', styling ?? ''].join(' ')}>
+    <p class={['italic text-sm font-heading mb-3', styling ?? ''].join(' ')}>
       <Slot />
     </p>
   );
