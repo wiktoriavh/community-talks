@@ -19,8 +19,8 @@
     "types": ["node", "vite/client", "vitest/globals", "vitest/importMeta"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"],
-      "@/*": ["./src/components/*"]
+      "@/*": ["./src/components/*"],
+      "~/*": ["./src/*"]
     }
   },
   "files": ["./.eslintrc.cjs", "./tailwind.config.ts"],

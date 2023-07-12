@@ -76,6 +76,7 @@
     ],
     "importOrder": [
       "@/*$",
+      "~/*$",
       "^[./]"
     ],
     "importOrderSeparation": true,
