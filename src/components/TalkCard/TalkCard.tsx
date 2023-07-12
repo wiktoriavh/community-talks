@@ -6,8 +6,8 @@ type TalkCardProps = {
   time: string;
   title: string;
   speaker: string;
-  job: string;
-  company: string;
+  job?: string;
+  company?: string;
 };
 
 function createSpeakerText(speaker: string, job?: string, company?: string) {
