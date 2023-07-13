@@ -6,7 +6,7 @@ export default component$(() => {
   return (
     <>
       <Header />
-      <main>
+      <main class="grid grid-cols-2">
         <Slot />
       </main>
       <Footer />
