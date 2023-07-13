@@ -31,7 +31,7 @@ export const TalkCard = component$<TalkCardProps>(
     });
 
     return (
-      <Card styling="bg-primary-50 text-black w-[620px] font-heading">
+      <Card styling="bg-primary-50 text-black w-full font-heading">
         <CardTitle q:slot="title">
           <span class="font-bold">{time}</span> - 30 Min Talk
         </CardTitle>
