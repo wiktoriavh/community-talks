@@ -30,11 +30,42 @@ chore/123-update-dependencies
 test/123-add-new-test
 ```
 
-While we recommend following Conventional Commits for the commit message, it is not mandatory. However, please make sure that the commit message is descriptive enough to understand the changes made.
+While we recommend following Conventional Commits for the commit message, it is not mandatory. However, please make sure that the commit message is descriptive enough to understand the changes made and why.
 
 If you've introduced new code that requires testing, please include relevant test cases. Ensure the test suite passes successfully. Make sure your code lints.
 
 Create a Pull Request using [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/) as your naming convention. Pull Requests should be made to the `main` branch. Be prepared to address any requested changes during the code review process.
+
+## Structuring your code
+
+### Components directory
+
+All components should be placed in the `src/components` directory. Each component should have its own directory with the component's name. The component's directory should contain the component's source code, tests, as well as potential registry, variables, and styles. All exports should be consolidated in a barrel file (`index.ts`).
+
+Here's an example structure for a component named "Example":
+
+```
+/src/components/Example
+  - Example.tsx
+  - Example.test.tsx
+  - Example.module.css
+  - Example.registry.ts
+  - types.ts
+  - const.ts
+  - index.ts
+```
+
+#### Explanation of the individual files
+
+- `Example.tsx` - The component's source code. This file is required.
+- `Example.test.tsx` - The component's test file. This file is required to ensure proper testing.
+- `Example.module.css` - The component's styles. This file is optional and should be used only for complex styling. For basic styling, it is recommended to use Tailwind CSS.
+- `Example.registry.ts` - The component's registry file. This file is optional and is used to enable the component's usage within Builder.io's CMS visual builder.
+- `types.ts` - The component's TypeScript types. This file is required if exporting types specific to the component.
+- `const.ts` - The component's constants. This file is required if exporting variables or functions specific to the component.
+- `index.ts` - The component's barrel file. This file is required and should consolidate all exports from the component's directory.
+
+By organizing components in this manner, it promotes maintainability and provides a clear structure for contributors to navigate and understand the codebase.
 
 ## Reporting bugs and issues
 
