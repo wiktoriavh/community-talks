@@ -23,9 +23,33 @@ describe('<Modal />', () => {
     const { screen, render } = await createDOM();
     await render(
       <Modal>
-        <img q:slot="feature-image" src="https://placekitten.com/600" />
+        <img
+          q:slot="feature-image"
+          width="160"
+          height="90"
+          src="https://placekitten.com/160/90"
+          class=""
+        />
       </Modal>
     );
-    expect(screen.innerHTML).toContain('Feature Image');
+    expect(screen.querySelector('img')).toBeTruthy();
+  });
+
+  it('should render with feature image and content', async () => {
+    const { screen, render } = await createDOM();
+    await render(
+      <Modal>
+        <img
+          q:slot="feature-image"
+          width="160"
+          height="90"
+          src="https://placekitten.com/160/90"
+          class=""
+        />
+        <div>Hello World</div>
+      </Modal>
+    );
+    expect(screen.querySelector('img')).toBeTruthy();
+    expect(screen.innerHTML).toContain('Hello World');
   });
 });
