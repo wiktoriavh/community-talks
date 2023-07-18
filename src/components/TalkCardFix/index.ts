@@ -1,1 +1,0 @@
-export { TalkCard } from './TalkCardBroken';
