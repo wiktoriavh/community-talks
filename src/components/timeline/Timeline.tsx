@@ -32,6 +32,7 @@ export const Timeline = component$<TimelineProps>((props) => {
             <RenderBlocks
               parent={props.builderBlock.id}
               path={`component.options.Cards.${idx}.content`}
+              styleProp={{ width: '100%' }}
               blocks={card.content}
             />
           </li>

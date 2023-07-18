@@ -1,58 +1,21 @@
+import type { Config } from 'tailwindcss';
+import heropatterns from 'tailwindcss-hero-patterns';
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
-import type { Config } from 'tailwindcss';
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
-      typography: (theme: (styleName: string) => any) => ({
+      typography: (theme: (path: string) => string | string[]) => ({
         DEFAULT: {
           css: {
-            h1: {
-              color: theme('colors.primary.500'),
-              fontFamily: theme('fontFamily.heading'),
-              fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.4xl'),
-            },
-            h2: {
-              color: theme('colors.white'),
-              fontFamily: theme('fontFamily.heading'),
-              fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.3xl'),
-            },
-            h3: {
-              color: theme('colors.white'),
-              fontFamily: theme('fontFamily.heading'),
-              fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.2xl'),
-            },
-            h4: {
-              color: theme('colors.white'),
-              fontFamily: theme('fontFamily.heading'),
-              fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.xl'),
-            },
-            h5: {
-              color: theme('colors.white'),
-              fontFamily: theme('fontFamily.heading'),
-              fontWeight: theme('fontWeight.bold'),
-              fontSize: theme('fontSize.xl'),
-            },
-            h6: {
-              color: theme('colors.white'),
-              fontFamily: theme('fontFamily.heading'),
-              fontWeight: theme('fontWeight.semibold'),
-              fontSize: theme('fontSize.xl'),
-            },
-            p: {
-              color: theme('colors.white'),
-              fontFamily: theme('fontFamily.sans'),
-            },
+            fontFamily: wrapArray(theme('fontFamily.heading')).join(', '),
           },
         },
       }),
-
       colors: {
         primary: {
           500: '#D3E065',
@@ -63,11 +26,14 @@ export default {
           300: '#424557',
         },
       },
-    },
-    fontFamily: {
-      sans: ['Montserrat', 'sans-serif'],
-      heading: ['Montserrat Alternates', 'sans-serif'],
+      fontFamily: {
+        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+        heading: ['Montserrat Alternates', ...defaultTheme.fontFamily.sans],
+      },
     },
   },
-  plugins: [forms, typography],
+  plugins: [forms, heropatterns, typography],
 } satisfies Config;
+
+const wrapArray = <T>(value: T | T[]): T[] =>
+  Array.isArray(value) ? value : [value];

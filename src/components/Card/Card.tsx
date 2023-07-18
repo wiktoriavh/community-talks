@@ -1,15 +1,16 @@
 import { Slot, component$ } from '@builder.io/qwik';
+import { classNames } from '~/utils';
 
 type CardProps = {
-  styling?: string;
+  class?: string;
 };
 
-const defaultStyles = 'rounded-xl py-4 px-6 bg-dark-300';
+const defaultStyles = 'rounded-xl py-4 px-6 bg-dark-300 overflow-hidden';
 
-export const Card = component$<CardProps>(({ styling }) => {
+export const Card = component$<CardProps>((props) => {
   return (
-    <div class={[defaultStyles, styling ?? ''].join(' ')}>
-      <Slot name="title" />
+    <div class={classNames(defaultStyles, props.class)}>
+      <Slot name="header" />
       <Slot />
     </div>
   );
