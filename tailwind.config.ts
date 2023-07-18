@@ -1,9 +1,8 @@
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import heropatterns from 'tailwindcss-hero-patterns';
 import defaultTheme from 'tailwindcss/defaultTheme';
-
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
