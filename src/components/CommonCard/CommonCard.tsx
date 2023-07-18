@@ -8,8 +8,8 @@ type CommonCardProps = {
 
 export const CommonCard = component$<CommonCardProps>(({ title }) => {
   return (
-    <Card styling="space-y-3">
-      <CardTitle q:slot="title" styling="font-bold">
+    <Card class="space-y-3">
+      <CardTitle q:slot="title" class="font-bold">
         {title}
       </CardTitle>
       <p class="text-lg font-light ">

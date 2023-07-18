@@ -1,6 +1,6 @@
 import { createDOM } from '@builder.io/qwik/testing';
 
-import { TalkCard } from './TalkCard';
+import { TalkCard } from './TalkCardBroken';
 
 describe('<TalkCard />', () => {
   it('should render', async () => {

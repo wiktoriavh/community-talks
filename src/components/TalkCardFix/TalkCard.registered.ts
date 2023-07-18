@@ -1,6 +1,6 @@
 import type { RegisteredComponent } from '@builder.io/sdk-qwik';
 
-import { TalkCard } from './TalkCard';
+import { TalkCard } from './TalkCardBroken';
 
 export const RegisteredTalkCard: RegisteredComponent = {
   component: TalkCard,
