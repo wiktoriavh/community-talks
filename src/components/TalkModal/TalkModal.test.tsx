@@ -3,13 +3,20 @@ import { createDOM } from '@builder.io/qwik/testing';
 import { TalkModal } from './TalkModal';
 
 const testingData = {
-  imageSrc: 'https://placekitten.com/1800',
+  image: 'https://placekitten.com/1800',
   title:
     "O womanly commerce! Wherefore doth deadly calamity grant not pardon for the rain's faults?",
   description: "Nay! From whence doth celestial vice wash away God's sinew?",
-  speakerName: 'Dr. Kelsie Kozey',
-  datetime: '2023-07-15T15:00:00.000Z',
+  date: '15. Juli 2023',
+  time: '15:00',
   link: 'https://discord.gg/web?event=123',
+
+  speaker: {
+    name: 'Dr. Kelsie Kozey',
+    job: 'Lead Directives Orchestrator',
+    company: 'Kozey - Kozey, Inc.',
+    avatar: 'https://placekitten.com/400',
+  },
 };
 
 describe('<TalkModal />', () => {
@@ -40,7 +47,19 @@ describe('<TalkModal />', () => {
   it('speaker name', async () => {
     const { screen, render } = await createDOM();
     await render(<TalkModal {...testingData} />);
-    expect(screen.innerHTML).toContain(testingData.speakerName);
+    expect(screen.innerHTML).toContain(testingData.speaker);
+  });
+
+  it('speaker job', async () => {
+    const { screen, render } = await createDOM();
+    await render(<TalkModal {...testingData} />);
+    expect(screen.innerHTML).toContain(testingData.speaker);
+  });
+
+  it('speaker company', async () => {
+    const { screen, render } = await createDOM();
+    await render(<TalkModal {...testingData} />);
+    expect(screen.innerHTML).toContain(testingData.speaker);
   });
 
   it('date and time', async () => {
