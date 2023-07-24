@@ -1,5 +1,5 @@
 import { Card } from '@/Card';
-import { CardHref } from '@/CardHref/CardHref';
+import { CardHref } from '@/CardHref';
 import { CardTitle } from '@/CardTitle';
 import { Footer } from '@/Footer';
 import { Header } from '@/Header';
