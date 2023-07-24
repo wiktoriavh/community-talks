@@ -47,19 +47,20 @@ describe('<TalkModal />', () => {
   it('speaker name', async () => {
     const { screen, render } = await createDOM();
     await render(<TalkModal {...testingData} />);
-    expect(screen.innerHTML).toContain(testingData.speaker);
+    console.log(screen.innerHTML);
+    expect(screen.innerHTML).toContain(testingData.speaker.name);
   });
 
   it('speaker job', async () => {
     const { screen, render } = await createDOM();
     await render(<TalkModal {...testingData} />);
-    expect(screen.innerHTML).toContain(testingData.speaker);
+    expect(screen.innerHTML).toContain(testingData.speaker.job);
   });
 
   it('speaker company', async () => {
     const { screen, render } = await createDOM();
     await render(<TalkModal {...testingData} />);
-    expect(screen.innerHTML).toContain(testingData.speaker);
+    expect(screen.innerHTML).toContain(testingData.speaker.company);
   });
 
   it('date and time', async () => {
