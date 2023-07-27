@@ -10,7 +10,7 @@ export const Footer = component$(() => {
         <menu class="flex gap-8 text-sm mt-8">
           <li>
             <a
-              href="https://github.com/r-webdev/community-talks"
+              href="https://github.com/Braweria/community-talks"
               class="hover:underline">
               GitHub
             </a>
