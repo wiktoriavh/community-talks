@@ -3,6 +3,7 @@ import { CardHref } from '@/CardHref';
 import { CardTitle } from '@/CardTitle';
 import { Footer } from '@/Footer';
 import { Header } from '@/Header';
+import { Timeline } from '@/Timeline/Timeline';
 import { component$ } from '@builder.io/qwik';
 
 export default component$(() => {
@@ -50,6 +51,7 @@ export default component$(() => {
             No scheduled events. Please check back later for updates and
             upcoming Community Talks.
           </h2>
+          <Timeline />
         </div>
       </main>
       <div id="__PORTAL__"></div>

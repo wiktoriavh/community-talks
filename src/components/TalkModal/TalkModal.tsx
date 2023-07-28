@@ -43,25 +43,39 @@ const Speaker = component$<SpeakerProps>(({ name, job, company, avatar }) => {
 });
 
 type TalkModalProps = {
-  image: string;
+  cover: string;
   title: string;
   description: string;
   date: string;
   time: string;
   link: string;
 
-  speaker: SpeakerProps;
+  speaker: string;
+  job?: string;
+  company?: string;
+  avatar?: string;
 };
 
 export const TalkModal = component$<TalkModalProps>(
-  ({ image, title, description, date, time, speaker, link }) => {
+  ({
+    cover,
+    title,
+    description,
+    date,
+    time,
+    speaker,
+    job,
+    company,
+    avatar,
+    link,
+  }) => {
     return (
       <Modal>
         <img
           q:slot="feature-image"
           width={160}
           height={90}
-          src={image}
+          src={cover}
           class="object-cover w-full h-auto aspect-[5/2] rounded-xl"
         />
         <div class="prose">
@@ -70,7 +84,7 @@ export const TalkModal = component$<TalkModalProps>(
         <p class="my-2">
           {date}, {time}
         </p>
-        <Speaker {...speaker} />
+        <Speaker name={speaker} job={job} company={company} avatar={avatar} />
         <div>
           <p class="font-sans text-base">{description}</p>
         </div>
