@@ -4,14 +4,15 @@ import { CardTitle } from '@/CardTitle';
 import { Footer } from '@/Footer';
 import { Header } from '@/Header';
 import { Timeline } from '@/Timeline/Timeline';
+import { Heading } from '@/typography/Heading';
 import { component$ } from '@builder.io/qwik';
 
 export default component$(() => {
   return (
     <>
-      <Header />
       <main class="grid grid-cols-2 gap-4 px-4">
         <div class="space-y-4">
+          <Header />
           <CardHref
             href="https://discord.gg/web"
             styling="flex gap-4 justify-center items-center font-heading font-bold text-lg bg-primary-500 hover:bg-primary-600 text-black">
@@ -47,10 +48,11 @@ export default component$(() => {
           <Footer />
         </div>
         <div class="space-y-4">
-          <h2 class="prose text-primary-500 text-3xl font-bold font-heading w-2/3 m-auto">
-            No scheduled events. Please check back later for updates and
-            upcoming Community Talks.
-          </h2>
+          <div class="text-center py-12 prose ">
+            <Heading level={2} class="text-primary-500">
+              Upcoming Events
+            </Heading>
+          </div>
           <Timeline />
         </div>
       </main>
