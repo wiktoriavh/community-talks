@@ -1,6 +1,7 @@
 import { Card } from '@/Card';
 import { CardHref } from '@/CardHref';
 import { CardTitle } from '@/CardTitle';
+import { CircleScatter } from '@/CircleScatter/CircleScatter';
 import { Footer } from '@/Footer';
 import { Header } from '@/Header';
 import { Timeline } from '@/Timeline/Timeline';
@@ -57,6 +58,7 @@ export default component$(() => {
         </div>
       </main>
       <div id="__PORTAL__"></div>
+      <CircleScatter />
     </>
   );
 });
