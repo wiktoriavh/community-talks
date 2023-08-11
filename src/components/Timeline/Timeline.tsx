@@ -3,19 +3,7 @@ import { formatDateTime } from '@/utils/formatDateTime';
 import { Resource, component$, useResource$ } from '@builder.io/qwik';
 import { getAllContent } from '@builder.io/sdk-qwik';
 
-type Talk = {
-  title: string;
-  speaker: string;
-  job?: string;
-  company?: string;
-  avatar?: string;
-  date: string;
-  time: string;
-  duration: number;
-  description: string;
-  cover: string;
-  recording?: string;
-};
+import type { Talk } from './types';
 
 function getUsableData(data: any): Talk {
   const usableData = {
@@ -64,8 +52,8 @@ export const Timeline = component$(() => {
           );
         }
       }
-      onResolved={(talk) => {
-        if (!talk?.results || talk.results.length === 0) {
+      onResolved={(talks) => {
+        if (!talks?.results || talks.results.length === 0) {
           return (
             <h2 class="prose text-primary-500 text-3xl font-bold font-heading w-2/3 m-auto">
               No scheduled events. Please check back later for updates and
@@ -75,7 +63,7 @@ export const Timeline = component$(() => {
         }
         return (
           <>
-            {talk.results.map((talk) => {
+            {talks.results.map((talk) => {
               const usableData = getUsableData(talk.data);
               return <TalkCard {...usableData} key={talk.id} />;
             })}
