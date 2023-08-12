@@ -1,5 +1,5 @@
 import { Card } from '@/Card';
-import { CardTitle } from '@/CardTitle';
+import { CardTitle } from '@/Card';
 import { component$ } from '@builder.io/qwik';
 
 export const Footer = component$(() => {

@@ -1,4 +1,4 @@
-import { TalkCard } from '@/TalkCard';
+import { TalkCard } from '@/Card';
 import { formatDateTime } from '@/utils/formatDateTime';
 import { Resource, component$, useResource$ } from '@builder.io/qwik';
 import { getAllContent } from '@builder.io/sdk-qwik';

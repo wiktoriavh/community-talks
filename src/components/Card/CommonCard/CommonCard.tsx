@@ -1,5 +1,5 @@
 import { Card } from '@/Card';
-import { CardTitle } from '@/CardTitle';
+import { CardTitle } from '@/Card';
 import { Slot, component$ } from '@builder.io/qwik';
 
 type CommonCardProps = {
@@ -12,9 +12,7 @@ export const CommonCard = component$<CommonCardProps>(({ title }) => {
       <CardTitle q:slot="title" styling="font-bold">
         {title}
       </CardTitle>
-      <p class="text-lg font-light ">
-        <Slot />
-      </p>
+      <Slot />
     </Card>
   );
 });

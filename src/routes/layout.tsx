@@ -1,6 +1,5 @@
-import { Card } from '@/Card';
-import { CardHref } from '@/CardHref';
-import { CardTitle } from '@/CardTitle';
+import { CommonCard } from '@/Card';
+import { CardHref } from '@/Card';
 import { Footer } from '@/Footer';
 import { Header } from '@/Header';
 import { Timeline } from '@/Timeline/Timeline';
@@ -27,8 +26,7 @@ export default component$(() => {
             </svg>{' '}
             Join our Discord Community
           </CardHref>
-          <Card>
-            <CardTitle q:slot="title">About</CardTitle>
+          <CommonCard title="About">
             <p class="mb-2">
               Community Talks are engaging and informative events where members
               of our community come together to share their knowledge, insights,
@@ -44,7 +42,7 @@ export default component$(() => {
               provide valuable insights and inspire continuous learning and
               growth within our vibrant community.
             </p>
-          </Card>
+          </CommonCard>
           <Footer />
         </div>
         <div class="space-y-4">

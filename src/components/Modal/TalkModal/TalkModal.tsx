@@ -1,5 +1,5 @@
 import { Button } from '@/Button';
-import { ButtonHref } from '@/ButtonHref';
+import { ButtonHref } from '@/Button';
 import { Modal } from '@/Modal';
 import { component$ } from '@builder.io/qwik';
 

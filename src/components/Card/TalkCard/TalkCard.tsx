@@ -1,5 +1,5 @@
 import { Card } from '@/Card';
-import { CardTitle } from '@/CardTitle';
+import { CardTitle } from '@/Card';
 import type { Talk } from '@/Timeline';
 import { $, component$ } from '@builder.io/qwik';
 
