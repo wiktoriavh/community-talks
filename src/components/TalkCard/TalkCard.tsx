@@ -17,6 +17,22 @@ function createSpeakerText(speaker: string, job?: string, company?: string) {
   return result;
 }
 
+const randomBackgroundPosition = () => {
+  const positions = [
+    'bg-bottom',
+    'bg-center',
+    'bg-left',
+    'bg-left-bottom',
+    'bg-left-top',
+    'bg-right',
+    'bg-right-bottom',
+    'bg-right-top',
+    'bg-top',
+  ];
+
+  return positions[Math.floor(Math.random() * positions.length)];
+};
+
 export const TalkCard = component$<Talk>(
   ({ time, title, speaker, job, company, duration, type }) => {
     const openTalkModal = $(() => {
@@ -25,10 +41,15 @@ export const TalkCard = component$<Talk>(
 
     return (
       <button class="w-full text-left group" onClick$={openTalkModal}>
-        <Card styling="bg-primary-50 text-black w-full font-heading">
+        <Card
+          styling={[
+            'bg-primary-50 text-black w-full font-heading bg-circles-25',
+            randomBackgroundPosition(),
+          ].join(' ')}>
           <CardTitle q:slot="title">
             <span class="font-bold">{time}</span> - {duration} Min {type}
           </CardTitle>
+
           <h3 class=" text-lg font-bold ">{title}</h3>
 
           <p class="mt-4 mb-5 italic font-light">
