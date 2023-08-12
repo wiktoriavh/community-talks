@@ -2,13 +2,13 @@ import { component$ } from '@builder.io/qwik';
 
 export const CircleScatter = component$(() => {
   return (
-    <svg
-      class="stroke-primary-500"
-      viewBox="0 0 1500 1500"
-      width="1500"
-      height="1500">
+    <svg viewBox="0 0 1500 1500" width="0" height="0">
       <defs>
-        <g fill="none" stroke-width="15" id="circle-scatter">
+        <g
+          stroke-width="15"
+          id="circle-scatter"
+          fill="none"
+          stroke="currentColor">
           <circle r="109" cx="810" cy="674"></circle>
           <circle r="40" cx="1105" cy="1350"></circle>
           <circle r="47" cx="839" cy="997"></circle>
