@@ -18,20 +18,20 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install PNPM
-        uses: pogfi/pnpm-install-cache@v0.0.2
+      - name: Install
+        uses: borales/actions-yarn@v4
         with:
-          recursive: false
-          node_modules: true
+          cmd: install # will run `yarn install` command
 
       - name: Lint
-        run: pnpm lint
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: lint # will run `yarn lint` command
 
       - name: Check Format
-        run: pnpm fmt.check
-
-      - name: Clean Store
-        run: pnpm store prune
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: fmt:check # will run `yarn fmt:check` command
 
   Test:
     runs-on: ubuntu-latest
@@ -42,20 +42,20 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install PNPM
-        uses: pogfi/pnpm-install-cache@v0.0.2
+      - name: Install
+        uses: borales/actions-yarn@v4
         with:
-          recursive: false
-          node_modules: true
+          cmd: install
 
       - name: Typecheck
-        run: pnpm tsc
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: tsc
 
       - name: Run Tests
-        run: pnpm test.run --reporter=verbose
-
-      - name: Clean Store
-        run: pnpm store prune
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test.run
 
   Build:
     runs-on: ubuntu-latest
@@ -66,14 +66,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install PNPM
-        uses: pogfi/pnpm-install-cache@v0.0.2
+      - name: Install
+        uses: borales/actions-yarn@v4
         with:
-          recursive: false
-          node_modules: true
+          cmd: install
 
       - name: Build
-        run: pnpm build.client
-
-      - name: Clean Store
-        run: pnpm store prune
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build.client
