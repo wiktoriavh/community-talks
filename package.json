@@ -84,5 +84,8 @@
     ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.0.2"
   }
 }
