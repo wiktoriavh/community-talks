@@ -1,6 +1,9 @@
+import { $ } from '@builder.io/qwik';
 import { createDOM } from '@builder.io/qwik/testing';
 
 import { TalkCard } from './TalkCard';
+
+const openModal = $(() => {});
 
 describe('<TalkCard />', () => {
   it('should render', async () => {
@@ -9,9 +12,16 @@ describe('<TalkCard />', () => {
       <TalkCard
         time="15:00"
         title="Presentation Title"
+        date="1. Januar 2020"
+        duration={30}
+        description="Lorem ipsum"
+        cover="https://placekitten.com/300"
+        type="Talk"
         speaker="Max Mustermann"
         job="Developer"
-        company="Acme Inc."></TalkCard>
+        company="Acme Inc."
+        link="https://www.example.com"
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Presentation Title');
   });
@@ -22,7 +32,14 @@ describe('<TalkCard />', () => {
       <TalkCard
         time="15:00"
         title="Presentation Title"
-        speaker="Max Mustermann"></TalkCard>
+        speaker="Max Mustermann"
+        date="1. Januar 2020"
+        duration={30}
+        description="Lorem ipsum"
+        cover="https://placekitten.com/300"
+        type="Talk"
+        link="https://www.example.com"
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann');
   });
@@ -34,7 +51,14 @@ describe('<TalkCard />', () => {
         time="15:00"
         title="Presentation Title"
         speaker="Max Mustermann"
-        job="Developer"></TalkCard>
+        date="1. Januar 2020"
+        duration={30}
+        description="Lorem ipsum"
+        cover="https://placekitten.com/300"
+        type="Talk"
+        job="Developer"
+        link="https://www.example.com"
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann, Developer');
   });
@@ -47,7 +71,14 @@ describe('<TalkCard />', () => {
         title="Presentation Title"
         speaker="Max Mustermann"
         job="Developer"
-        company="Acme Inc."></TalkCard>
+        date="1. Januar 2020"
+        duration={30}
+        description="Lorem ipsum"
+        cover="https://placekitten.com/300"
+        type="Talk"
+        company="Acme Inc."
+        link="https://www.example.com"
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann, Developer (Acme Inc.)');
   });
@@ -59,7 +90,14 @@ describe('<TalkCard />', () => {
         time="15:00"
         title="Presentation Title"
         speaker="Max Mustermann"
-        company="Acme Inc."></TalkCard>
+        date="1. Januar 2020"
+        duration={30}
+        description="Lorem ipsum"
+        cover="https://placekitten.com/300"
+        type="Talk"
+        company="Acme Inc."
+        link="https://www.example.com"
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann (Acme Inc.)');
   });

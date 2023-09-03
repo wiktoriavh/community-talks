@@ -1,9 +1,10 @@
+import { $ } from '@builder.io/qwik';
 import { createDOM } from '@builder.io/qwik/testing';
 
 import { TalkModal } from './TalkModal';
 
 const testingData = {
-  image: 'https://placekitten.com/1800',
+  cover: 'https://placekitten.com/1800',
   title:
     "O womanly commerce! Wherefore doth deadly calamity grant not pardon for the rain's faults?",
   description: "Nay! From whence doth celestial vice wash away God's sinew?",
@@ -11,61 +12,61 @@ const testingData = {
   time: '15:00',
   link: 'https://discord.gg/web?event=123',
 
-  speaker: {
-    name: 'Dr. Kelsie Kozey',
-    job: 'Lead Directives Orchestrator',
-    company: 'Kozey - Kozey, Inc.',
-    avatar: 'https://placekitten.com/400',
-  },
+  speaker: 'Dr. Kelsie Kozey',
+  job: 'Lead Directives Orchestrator',
+  company: 'Kozey - Kozey, Inc.',
+  avatar: 'https://placekitten.com/400',
 };
+
+const onClose = $(() => {});
 
 describe('<TalkModal />', () => {
   it('render', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
     expect(screen.querySelector('dialog')).toBeTruthy();
   });
 
   it('featured image', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
     expect(screen.querySelector('img')).toBeTruthy();
   });
 
   it('title', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
     expect(screen.innerHTML).toContain(testingData.title);
   });
 
   it('description', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
     expect(screen.innerHTML).toContain(testingData.description);
   });
 
   it('speaker name', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
     console.log(screen.innerHTML);
-    expect(screen.innerHTML).toContain(testingData.speaker.name);
+    expect(screen.innerHTML).toContain(testingData.speaker);
   });
 
   it('speaker job', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
-    expect(screen.innerHTML).toContain(testingData.speaker.job);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
+    expect(screen.innerHTML).toContain(testingData.job);
   });
 
   it('speaker company', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
-    expect(screen.innerHTML).toContain(testingData.speaker.company);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
+    expect(screen.innerHTML).toContain(testingData.company);
   });
 
   it('date and time', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
     expect(screen.innerHTML).toContain('15. Juli 2023');
     expect(screen.innerHTML).toContain('15:00');
   });
@@ -74,7 +75,7 @@ describe('<TalkModal />', () => {
 
   it('link to the talk', async () => {
     const { screen, render } = await createDOM();
-    await render(<TalkModal {...testingData} />);
+    await render(<TalkModal isOpen onClose={onClose} {...testingData} />);
     expect(screen.innerHTML).toContain('Join Event');
     // expect a href with link to discord.gg/web
     expect(screen.querySelector('a[href*=discord.gg/web?event]')).toBeTruthy();

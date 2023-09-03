@@ -1,5 +1,4 @@
-import { Button } from '@/Button';
-import { ButtonHref } from '@/ButtonHref';
+import { ButtonHref } from '@/Button';
 import { Modal } from '@/Modal';
 import { component$ } from '@builder.io/qwik';
 
@@ -43,25 +42,44 @@ const Speaker = component$<SpeakerProps>(({ name, job, company, avatar }) => {
 });
 
 type TalkModalProps = {
-  image: string;
+  cover: string;
   title: string;
   description: string;
   date: string;
   time: string;
   link: string;
 
-  speaker: SpeakerProps;
+  speaker: string;
+  job?: string;
+  company?: string;
+  avatar?: string;
+
+  isOpen: boolean;
+  onClose: () => void;
 };
 
 export const TalkModal = component$<TalkModalProps>(
-  ({ image, title, description, date, time, speaker, link }) => {
+  ({
+    cover,
+    title,
+    description,
+    date,
+    time,
+    speaker,
+    job,
+    company,
+    avatar,
+    link,
+    isOpen,
+    onClose,
+  }) => {
     return (
-      <Modal>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <img
           q:slot="feature-image"
           width={160}
           height={90}
-          src={image}
+          src={cover}
           class="object-cover w-full h-auto aspect-[5/2] rounded-xl"
         />
         <div class="prose">
@@ -70,14 +88,16 @@ export const TalkModal = component$<TalkModalProps>(
         <p class="my-2">
           {date}, {time}
         </p>
-        <Speaker {...speaker} />
+        <Speaker name={speaker} job={job} company={company} avatar={avatar} />
         <div>
           <p class="font-sans text-base">{description}</p>
         </div>
         <footer class="flex justify-end gap-4 pt-8 pb-4">
-          <ButtonHref href={link}>Join Event</ButtonHref>
+          <ButtonHref href={link} target="_blank">
+            Join Event
+          </ButtonHref>
           {/* TODO: How to add something to calendar? */}
-          <Button onClick$={() => console.log('foo')}>Add to Calendar</Button>
+          {/* <Button onClick$={() => console.log('foo')}>Add to Calendar</Button> */}
         </footer>
       </Modal>
     );
