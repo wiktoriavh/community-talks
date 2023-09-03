@@ -1,6 +1,9 @@
+import { $ } from '@builder.io/qwik';
 import { createDOM } from '@builder.io/qwik/testing';
 
 import { TalkCard } from './TalkCard';
+
+const openModal = $(() => {});
 
 describe('<TalkCard />', () => {
   it('should render', async () => {
@@ -18,7 +21,7 @@ describe('<TalkCard />', () => {
         job="Developer"
         company="Acme Inc."
         link="https://www.example.com"
-        openModal={() => {}}></TalkCard>
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Presentation Title');
   });
@@ -36,7 +39,7 @@ describe('<TalkCard />', () => {
         cover="https://placekitten.com/300"
         type="Talk"
         link="https://www.example.com"
-        openModal={() => {}}></TalkCard>
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann');
   });
@@ -55,7 +58,7 @@ describe('<TalkCard />', () => {
         type="Talk"
         job="Developer"
         link="https://www.example.com"
-        openModal={() => {}}></TalkCard>
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann, Developer');
   });
@@ -75,7 +78,7 @@ describe('<TalkCard />', () => {
         type="Talk"
         company="Acme Inc."
         link="https://www.example.com"
-        openModal={() => {}}></TalkCard>
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann, Developer (Acme Inc.)');
   });
@@ -94,7 +97,7 @@ describe('<TalkCard />', () => {
         type="Talk"
         company="Acme Inc."
         link="https://www.example.com"
-        openModal={() => {}}></TalkCard>
+        openModal={openModal}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann (Acme Inc.)');
   });
