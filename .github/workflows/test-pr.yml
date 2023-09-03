@@ -31,7 +31,7 @@ jobs:
       - name: Check Format
         uses: borales/actions-yarn@v4
         with:
-          cmd: fmt:check # will run `yarn fmt:check` command
+          cmd: fmt.check # will run `yarn fmt:check` command
 
   Test:
     runs-on: ubuntu-latest
