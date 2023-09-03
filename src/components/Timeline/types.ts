@@ -11,4 +11,5 @@ export type Talk = {
   cover: string;
   recording?: string;
   type: string;
+  link: string;
 };

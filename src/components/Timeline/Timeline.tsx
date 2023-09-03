@@ -1,6 +1,13 @@
 import { TalkCard } from '@/Card';
+import { TalkModal } from '@/Modal/TalkModal/TalkModal';
 import { formatDateTime } from '@/utils/formatDateTime';
-import { Resource, component$, useResource$ } from '@builder.io/qwik';
+import {
+  $,
+  Resource,
+  component$,
+  useResource$,
+  useStore,
+} from '@builder.io/qwik';
 import { getAllContent } from '@builder.io/sdk-qwik';
 
 import type { Talk } from './types';
@@ -22,7 +29,11 @@ function getTodayAtMidnight() {
   return today;
 }
 
+type DialogIsOpen = Record<'dialogs', Record<string, boolean>>;
+
 export const Timeline = component$(() => {
+  const dialogIsOpen = useStore<DialogIsOpen>({ dialogs: {} });
+
   const talks = useResource$(async () => {
     // TODO: Mutate the data to be in the correct format once getContent becomes type-safe
     const content = await getAllContent({
@@ -64,8 +75,22 @@ export const Timeline = component$(() => {
         return (
           <>
             {talks.results.map((talk) => {
+              const id = talk.id!;
+
+              const toggleModal = $(() => {
+                dialogIsOpen.dialogs[id!] = !dialogIsOpen.dialogs[id!];
+              });
               const usableData = getUsableData(talk.data);
-              return <TalkCard {...usableData} key={talk.id} />;
+              return (
+                <div key={talk.id}>
+                  <TalkCard {...usableData} openModal={toggleModal} />
+                  <TalkModal
+                    {...usableData}
+                    isOpen={dialogIsOpen.dialogs[talk.id!] ?? false}
+                    onClose={toggleModal}
+                  />
+                </div>
+              );
             })}
           </>
         );

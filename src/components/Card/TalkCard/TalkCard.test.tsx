@@ -16,7 +16,9 @@ describe('<TalkCard />', () => {
         type="Talk"
         speaker="Max Mustermann"
         job="Developer"
-        company="Acme Inc."></TalkCard>
+        company="Acme Inc."
+        link="https://www.example.com"
+        openModal={() => {}}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Presentation Title');
   });
@@ -32,7 +34,9 @@ describe('<TalkCard />', () => {
         duration={30}
         description="Lorem ipsum"
         cover="https://placekitten.com/300"
-        type="Talk"></TalkCard>
+        type="Talk"
+        link="https://www.example.com"
+        openModal={() => {}}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann');
   });
@@ -49,7 +53,9 @@ describe('<TalkCard />', () => {
         description="Lorem ipsum"
         cover="https://placekitten.com/300"
         type="Talk"
-        job="Developer"></TalkCard>
+        job="Developer"
+        link="https://www.example.com"
+        openModal={() => {}}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann, Developer');
   });
@@ -67,7 +73,9 @@ describe('<TalkCard />', () => {
         description="Lorem ipsum"
         cover="https://placekitten.com/300"
         type="Talk"
-        company="Acme Inc."></TalkCard>
+        company="Acme Inc."
+        link="https://www.example.com"
+        openModal={() => {}}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann, Developer (Acme Inc.)');
   });
@@ -84,7 +92,9 @@ describe('<TalkCard />', () => {
         description="Lorem ipsum"
         cover="https://placekitten.com/300"
         type="Talk"
-        company="Acme Inc."></TalkCard>
+        company="Acme Inc."
+        link="https://www.example.com"
+        openModal={() => {}}></TalkCard>
     );
     expect(screen.innerHTML).toContain('Max Mustermann (Acme Inc.)');
   });

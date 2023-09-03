@@ -5,14 +5,14 @@ import { Modal } from './Modal';
 describe('<Modal />', () => {
   it('should render', async () => {
     const { screen, render } = await createDOM();
-    await render(<Modal />);
+    await render(<Modal isOpen onClose={() => {}} />);
     expect(screen.querySelector('dialog')).toBeTruthy();
   });
 
   it('should render with content', async () => {
     const { screen, render } = await createDOM();
     await render(
-      <Modal>
+      <Modal isOpen onClose={() => {}}>
         <div>Hello World</div>
       </Modal>
     );
@@ -22,7 +22,7 @@ describe('<Modal />', () => {
   it('should render with feature image', async () => {
     const { screen, render } = await createDOM();
     await render(
-      <Modal>
+      <Modal isOpen onClose={() => {}}>
         <img
           q:slot="feature-image"
           width="160"
@@ -38,7 +38,7 @@ describe('<Modal />', () => {
   it('should render with feature image and content', async () => {
     const { screen, render } = await createDOM();
     await render(
-      <Modal>
+      <Modal isOpen onClose={() => {}}>
         <img
           q:slot="feature-image"
           width="160"

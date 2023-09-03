@@ -1,8 +1,7 @@
 import { Card } from '@/Card';
 import { CardTitle } from '@/Card';
 import type { Talk } from '@/Timeline';
-import { $, component$, useContext } from '@builder.io/qwik';
-import { PopupManagerContext } from '~/Context/PopupManager/PopupManager';
+import { $, component$ } from '@builder.io/qwik';
 
 function createSpeakerText(speaker: string, job?: string, company?: string) {
   let result = speaker;
@@ -34,18 +33,12 @@ const randomBackgroundPosition = () => {
   return positions[Math.floor(Math.random() * positions.length)];
 };
 
-const Hello = component$(({title}) => {
-  return <div>Hello {title}</div>;
-});
+type TalkCardProps = Talk & { openModal: () => void };
 
-export const TalkCard = component$<Talk>(
-  ({ time, title, speaker, job, company, duration, type }) => {
-    const popupManager = useContext(PopupManagerContext);
-
-    const openTalkModal = $(async () => {
-      await popupManager.show(Hello, {
-        title: 'Test',
-      });
+export const TalkCard = component$<TalkCardProps>(
+  ({ time, title, speaker, job, company, duration, type, openModal }) => {
+    const openTalkModal = $(() => {
+      openModal();
     });
 
     return (

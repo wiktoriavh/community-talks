@@ -1,4 +1,3 @@
-import { Button } from '@/Button';
 import { ButtonHref } from '@/Button';
 import { Modal } from '@/Modal';
 import { component$ } from '@builder.io/qwik';
@@ -54,6 +53,9 @@ type TalkModalProps = {
   job?: string;
   company?: string;
   avatar?: string;
+
+  isOpen: boolean;
+  onClose: () => void;
 };
 
 export const TalkModal = component$<TalkModalProps>(
@@ -68,9 +70,11 @@ export const TalkModal = component$<TalkModalProps>(
     company,
     avatar,
     link,
+    isOpen,
+    onClose,
   }) => {
     return (
-      <Modal>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <img
           q:slot="feature-image"
           width={160}
@@ -89,9 +93,11 @@ export const TalkModal = component$<TalkModalProps>(
           <p class="font-sans text-base">{description}</p>
         </div>
         <footer class="flex justify-end gap-4 pt-8 pb-4">
-          <ButtonHref href={link}>Join Event</ButtonHref>
+          <ButtonHref href={link} target="_blank">
+            Join Event
+          </ButtonHref>
           {/* TODO: How to add something to calendar? */}
-          <Button onClick$={() => console.log('foo')}>Add to Calendar</Button>
+          {/* <Button onClick$={() => console.log('foo')}>Add to Calendar</Button> */}
         </footer>
       </Modal>
     );
