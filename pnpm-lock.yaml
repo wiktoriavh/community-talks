@@ -9,14 +9,14 @@ devDependencies:
     specifier: 0.0.10
     version: 0.0.10
   '@builder.io/qwik':
-    specifier: 1.2.1
-    version: 1.2.1(undici@5.22.1)
+    specifier: 1.2.6
+    version: 1.2.6(undici@5.22.1)
   '@builder.io/qwik-city':
-    specifier: 1.2.1
-    version: 1.2.1
+    specifier: 1.2.6
+    version: 1.2.6
   '@builder.io/sdk-qwik':
-    specifier: 0.4.2
-    version: 0.4.2(@builder.io/qwik@1.2.1)
+    specifier: 0.5.2
+    version: 0.5.2(@builder.io/qwik@1.2.6)
   '@tailwindcss/forms':
     specifier: 0.5.3
     version: 0.5.3(tailwindcss@3.3.2)
@@ -1375,8 +1375,8 @@ packages:
       typescript: 5.1.6
     dev: true
 
-  /@builder.io/qwik-city@1.2.1:
-    resolution: {integrity: sha512-YpohXBzluo2FBed8JRItg8S8FYfgf9gq+/wrZaKXGhXJu3SwM+fHrIjQY5+/+zBA42MXiKdfKedQrciKhCwd5Q==}
+  /@builder.io/qwik-city@1.2.6:
+    resolution: {integrity: sha512-/uo58NysxpdsiEwuuKo8HDM9UYYAofrniupor2v5vci3Dr6PTXcvKAFJ1Z+SdJGv2uxr5hvKsbVohnVYa9jxYg==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     dependencies:
       '@mdx-js/mdx': 2.3.0
@@ -1391,22 +1391,23 @@ packages:
       - supports-color
     dev: true
 
-  /@builder.io/qwik@1.2.1(undici@5.22.1):
-    resolution: {integrity: sha512-ltjOtRQarNNWcRbnRpbnI6+Luq6kFLkWjzbYEmB7z8IOrYCPhw0ItTp3CTvlWa1tXAHZ99pBcPvVL5BL7OGkVw==}
+  /@builder.io/qwik@1.2.6(undici@5.22.1):
+    resolution: {integrity: sha512-Cm1sLAimML55I5T1RI80R1lLgI4cnSeQt5obQtcMKa8wMmf2/luEyQaEkeN2fV3sp/gaVXCfAuKaddXK6ONdww==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     hasBin: true
     peerDependencies:
       undici: ^5.14.0
     dependencies:
+      csstype: 3.1.2
       undici: 5.22.1
     dev: true
 
-  /@builder.io/sdk-qwik@0.4.2(@builder.io/qwik@1.2.1):
-    resolution: {integrity: sha512-gx68PluZWgFdRCBowxDTbDP1JVJLydapEdR1mMw739b42cxR3q0/Q1jQHrUuegU7/5/RkkBBQuT6StVmRAcoFQ==}
+  /@builder.io/sdk-qwik@0.5.2(@builder.io/qwik@1.2.6):
+    resolution: {integrity: sha512-Q8cy7LQLtVCHDAGk5DiGTEtgZlzZvw/INV6dytlAnHD4gXUPEJVNpvlZuB7D+VuS6yZ1GCyzsadaLn8f0SPUTQ==}
     peerDependencies:
       '@builder.io/qwik': '>=1.0.0'
     dependencies:
-      '@builder.io/qwik': 1.2.1(undici@5.22.1)
+      '@builder.io/qwik': 1.2.6(undici@5.22.1)
     dev: true
 
   /@cspotcode/source-map-support@0.8.1:
@@ -2631,7 +2632,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.9
       '@babel/generator': 7.22.9
-      '@babel/parser': 7.22.5
+      '@babel/parser': 7.22.7
       '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.9)
       '@babel/plugin-syntax-typescript': 7.22.5(@babel/core@7.22.9)
       '@babel/preset-env': 7.22.9(@babel/core@7.22.9)
